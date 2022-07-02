@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/HealMent"
+                android:textSize="24sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/friendbtn"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="wrap_content"
+                android:layout_height="135dp"
+                android:layout_weight="1"
+                android:text="@string/friend" />
+
+            <Button
+                android:id="@+id/mngbtn"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="wrap_content"
+                android:layout_height="134dp"
+                android:layout_weight="1"
+                android:text="@string/mng" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/lovebtn"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="135dp"
+                android:layout_height="134dp"
+                android:layout_weight="1"
+                android:text="@string/love"
+                app:iconTint="@color/material_dynamic_neutral99" />
+
+            <Button
+                android:id="@+id/lifebtn"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="135dp"
+                android:layout_height="134dp"
+                android:layout_weight="1"
+                android:text="@string/life" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center|clip_vertical"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/bookbtn"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="135dp"
+                android:layout_height="134dp"
+                android:layout_weight="1"
+                android:text="@string/book" />
+
+            <Button
+                android:id="@+id/humorbtn"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="135dp"
+                android:layout_height="134dp"
+                android:layout_weight="1"
+                android:text="@string/humor" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

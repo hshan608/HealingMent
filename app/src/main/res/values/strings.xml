@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">HealingMent</string>
+    <string name="HealMent">힐링명언</string>
+    <string name="love">연애</string>
+    <string name="life">인생</string>
+    <string name="friend">우정</string>
+    <string name="mng">경영</string>
+    <string name="book">책</string>
+    <string name="humor">유머</string>
+</resources>
