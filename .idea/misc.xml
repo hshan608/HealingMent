@@ -3,6 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/HAN/AndroidStudioProjects/HealingMent/app/src/main/res/layout/activity_friend.xml" value="0.25" />
+        <entry key="..\:/Users/HAN/AndroidStudioProjects/HealingMent/app/src/main/res/layout/activity_friendment.xml" value="0.33" />
+        <entry key="..\:/Users/HAN/AndroidStudioProjects/HealingMent/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/HAN/AndroidStudioProjects/HealingMent/app/src/main/res/layout/activity_main2.xml" value="0.1875" />
+        <entry key="..\:/Users/HAN/AndroidStudioProjects/HealingMent/app/src/main/res/layout/friendment.xml" value="0.3651041666666667" />
         <entry key="..\:/Users/Min/AndroidStudioProjects/HealingMent/app/src/main/res/layout/activity_main.xml" value="0.358695652173913" />
       </map>
     </option>

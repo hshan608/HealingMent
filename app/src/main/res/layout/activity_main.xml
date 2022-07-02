@@ -6,101 +6,32 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:orientation="horizontal">
+        <Button
+            android:id="@+id/lovebtn"
+            android:layout_width="0dp"
+            android:layout_height="135dp"
+            android:layout_marginEnd="58dp"
+            android:text="Button"
+            app:layout_constraintBaseline_toBaselineOf="@+id/friendbtn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/friendbtn" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/HealMent"
-                android:textSize="24sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/friendbtn"
-                style="@style/Widget.AppCompat.Button.Colored"
-                android:layout_width="wrap_content"
-                android:layout_height="135dp"
-                android:layout_weight="1"
-                android:text="@string/friend" />
-
-            <Button
-                android:id="@+id/mngbtn"
-                style="@style/Widget.AppCompat.Button.Colored"
-                android:layout_width="wrap_content"
-                android:layout_height="134dp"
-                android:layout_weight="1"
-                android:text="@string/mng" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/lovebtn"
-                style="@style/Widget.AppCompat.Button.Colored"
-                android:layout_width="135dp"
-                android:layout_height="134dp"
-                android:layout_weight="1"
-                android:text="@string/love"
-                app:iconTint="@color/material_dynamic_neutral99" />
-
-            <Button
-                android:id="@+id/lifebtn"
-                style="@style/Widget.AppCompat.Button.Colored"
-                android:layout_width="135dp"
-                android:layout_height="134dp"
-                android:layout_weight="1"
-                android:text="@string/life" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center|clip_vertical"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/bookbtn"
-                style="@style/Widget.AppCompat.Button.Colored"
-                android:layout_width="135dp"
-                android:layout_height="134dp"
-                android:layout_weight="1"
-                android:text="@string/book" />
-
-            <Button
-                android:id="@+id/humorbtn"
-                style="@style/Widget.AppCompat.Button.Colored"
-                android:layout_width="135dp"
-                android:layout_height="134dp"
-                android:layout_weight="1"
-                android:text="@string/humor" />
-
-        </LinearLayout>
-
-    </LinearLayout>
+        <Button
+            android:id="@+id/friendbtn"
+            android:layout_width="0dp"
+            android:layout_height="135dp"
+            android:layout_marginStart="38dp"
+            android:layout_marginTop="53dp"
+            android:layout_marginEnd="47dp"
+            android:text="Button"
+            app:layout_constraintEnd_toStartOf="@+id/lovebtn"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
