@@ -16,13 +16,9 @@ public class MainActivity extends AppCompatActivity {
 
 
         Button name_friend_btn = (Button) findViewById(R.id.friendbtn);
-        name_friend_btn.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View view){
-                Intent intent = new Intent(getApplicationContext(), FriendActivity.class);
-                startActivity(intent);
-            }
+        name_friend_btn.setOnClickListener(view -> {
+            Intent intent = new Intent(getApplicationContext(), FriendActivity.class);
+            startActivity(intent);
         });
     }
 }

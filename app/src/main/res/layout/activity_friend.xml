@@ -32,7 +32,7 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/copybtn"
+            android:id="@+id/screenshotbtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="142dp"
@@ -40,7 +40,8 @@
             android:text="Button"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/maintxt" />
+            android:onClick="SreenshotButton"
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -15,7 +15,7 @@
             android:layout_width="0dp"
             android:layout_height="135dp"
             android:layout_marginEnd="58dp"
-            android:text="Button"
+            android:text="@string/love"
             app:layout_constraintBaseline_toBaselineOf="@+id/friendbtn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/friendbtn" />
@@ -27,7 +27,7 @@
             android:layout_marginStart="38dp"
             android:layout_marginTop="53dp"
             android:layout_marginEnd="47dp"
-            android:text="Button"
+            android:text="@string/friend"
             app:layout_constraintEnd_toStartOf="@+id/lovebtn"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
