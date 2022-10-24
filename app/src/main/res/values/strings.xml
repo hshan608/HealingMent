@@ -7,4 +7,9 @@
     <string name="mng">경영</string>
     <string name="book">책</string>
     <string name="humor">유머</string>
+    <string name="mainlogo">메인로고</string>
+    <string name="menubtn">메뉴버튼</string>
+    <string name="sharebtn">공유버튼</string>
+    <string name="likebtn">좋아요버튼</string>
+    <string name="downbtn">다운버튼</string>
 </resources>

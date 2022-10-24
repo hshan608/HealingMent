@@ -5,12 +5,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFE6E6"
     android:gravity="center">
 
     <ImageView
-        android:layout_width="220dp"
-        android:layout_height="231dp"
+        android:id="@+id/mainlogo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:src="@drawable/ttoonzzi_logo_1x" />
+        android:src="@drawable/ttoonzzi_logo_1x"
+        android:contentDescription="@string/mainlogo"/>
 
 </LinearLayout>
