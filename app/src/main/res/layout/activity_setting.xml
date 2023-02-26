@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/Settxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="69dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="104dp"
+        android:fontFamily="@font/kopub_medium"
+        android:text="환경설정"
+        android:textColor="#323333"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toTopOf="@+id/setkorbtn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/lengtxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="33dp"
+        android:layout_marginTop="91dp"
+        android:fontFamily="@font/kopub_medium"
+        android:text="언어"
+        android:textColor="#323333"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/modtxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="216dp"
+        android:fontFamily="@font/kopub_medium"
+        android:text="모드"
+        android:textColor="#323333"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/setkorbtn"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="61dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginBottom="77dp"
+        android:background="@drawable/btn_pink"
+        android:onClick="setKor"
+        android:text="한국어"
+        app:layout_constraintBottom_toTopOf="@+id/ebookmodebtn"
+        app:layout_constraintEnd_toStartOf="@+id/setengbtn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Settxt" />
+
+    <Button
+        android:id="@+id/ebookmodebtn"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="61dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginBottom="444dp"
+        android:background="@drawable/btn_pink"
+        android:onClick="setEbook"
+        android:text="E-book"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imagemodebtn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/setkorbtn" />
+
+    <Button
+        android:id="@+id/imagemodebtn"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="84dp"
+        android:layout_marginBottom="444dp"
+        android:background="@drawable/btn_pink"
+        android:onClick="setImage"
+        android:text="이미지"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/ebookmodebtn"
+        app:layout_constraintTop_toBottomOf="@+id/setengbtn" />
+
+    <Button
+        android:id="@+id/setengbtn"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="142dp"
+        android:layout_marginEnd="84dp"
+        android:layout_marginBottom="77dp"
+        android:background="@drawable/btn_pink"
+        android:onClick="setEng"
+        android:text="English"
+        app:layout_constraintBottom_toTopOf="@+id/imagemodebtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/setkorbtn"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,6 @@
 package com.example.healingment.db;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -15,14 +16,24 @@ import java.io.OutputStream;
 
 public class DataBaseHelper extends SQLiteOpenHelper{
     private final static String TAG = "DataBaseHelper"; // Logcat에 출력할 태그이름
+    private final static int DATABASE_VERSION = 2; // 버전 (ISLIKE추가)
     // database 의 파일 경로
     private static String DB_PATH = "";
     private static String DB_NAME = "ment.db";
+    private static String TABLE_NAME = "Ments";
     private SQLiteDatabase mDataBase;
+
+    // 3. 테이블 항목 네임
+    public static final String COL_1 = "NO";
+    public static final String COL_2 = "LANG";
+    public static final String COL_3 = "CONTENTS";
+    public static final String COL_4 = "RESONER";
+    public static final String COL_5 = "ISLIKE";
+
     private Context mContext;
 
     public DataBaseHelper(Context context) {
-        super(context,DB_NAME,null,1);
+        super(context,DB_NAME,null,2);
 
 
         DB_PATH = "/data/data/" + context.getPackageName() + "/databases/";
@@ -91,5 +102,15 @@ public class DataBaseHelper extends SQLiteOpenHelper{
             e.printStackTrace();
             Log.d("dbCopy","IOException 발생함");
         }
+    }
+
+    public boolean updateData(String CONTENTS, String RESONER, String islike){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COL_3,CONTENTS);
+        contentValues.put(COL_4,RESONER);
+        contentValues.put(COL_5,islike);
+        db.update(TABLE_NAME,contentValues,"CONTENTS = ?",new String[] { CONTENTS });
+        return true;
     }
 }

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">HealingMent</string>
+    <string name="app_name">힐링하이</string>
     <string name="HealMent">힐링명언</string>
     <string name="love">연애</string>
     <string name="life">인생</string>
@@ -11,5 +11,6 @@
     <string name="menubtn">메뉴버튼</string>
     <string name="sharebtn">공유버튼</string>
     <string name="likebtn">좋아요버튼</string>
-    <string name="downbtn">다운버튼</string>
+    <string name="downbtn">다운버튼</string>\
+    <string name="box"><u>보관함</u></string>
 </resources>
