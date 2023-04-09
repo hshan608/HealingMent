@@ -26,6 +26,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.healingment.db.DataBaseHelper;
@@ -38,6 +39,7 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     private View drawerView;
+    String[] mentnumber;   // ArrayAdapter에 넣을 배열 생성
     String[] content;   // ArrayAdapter에 넣을 배열 생성
     String[] resoner;   // ArrayAdapter에 넣을 배열 생성
     String[] islike;   // ArrayAdapter에 넣을 배열 생성
@@ -49,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
     TextView maintxt;
     TextView mainauthor;
     TextView settingtxt;
+    TextView liketxt;
     ConstraintLayout nextlayout;
     private String val;
     private int seq = (int) (Math.random() * 49);
@@ -85,11 +88,19 @@ public class MainActivity extends AppCompatActivity {
         drawerView = (View)findViewById(R.id.drawer2);
 
         settingtxt = findViewById(R.id.setting);
+        liketxt = findViewById(R.id.likebox);
 
         if(mode.equals("image")){
             int[] images = {R.drawable.bg1,R.drawable.bg2,R.drawable.bg3,R.drawable.bg4,R.drawable.bg5,R.drawable.bg6,R.drawable.bg7,R.drawable.bg8,R.drawable.bg9,R.drawable.bg10,R.drawable.bg11,R.drawable.bg12,R.drawable.bg13,R.drawable.bg14,R.drawable.bg15,R.drawable.bg16,R.drawable.bg17,R.drawable.bg18,R.drawable.bg19,R.drawable.bg20,R.drawable.bg21,R.drawable.bg22,R.drawable.bg23,R.drawable.bg24};
+            int whitecolor = ContextCompat.getColor(getApplicationContext(), R.color.white);
+            maintxt.setTextColor(whitecolor);
+            mainauthor.setTextColor(whitecolor);
             Random rand = new Random();
             drawerLayout.setBackgroundResource(images[rand.nextInt(images.length)]);
+        }else{
+            int blackcolor = ContextCompat.getColor(getApplicationContext(), R.color.black);
+            maintxt.setTextColor(blackcolor);
+            mainauthor.setTextColor(blackcolor);
         }
 
         settingtxt.setOnClickListener(new View.OnClickListener() {
@@ -99,6 +110,15 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(SettingIntent);
             }
         });
+
+        liketxt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent LikeIntent = new Intent(MainActivity.this, LikeActivity.class);
+                startActivity(LikeIntent);
+            }
+        });
+
 
         drawerLayout.addDrawerListener(listener);
         drawerView.setOnTouchListener(new View.OnTouchListener() {
@@ -114,7 +134,17 @@ public class MainActivity extends AppCompatActivity {
         if(islike[seq].equals("Y")){
             likebtn.setImageResource(R.drawable.heart);
         }
-        UpdateData();
+
+        // nav 언어 설정
+        String lang = PreferenceManager.getString(getApplicationContext(), "lang");
+        if(lang.equals("eng")){
+            liketxt.setText("Favorite Quotes");
+            settingtxt.setText("Options");
+        }else{
+            liketxt.setText("보관함");
+            settingtxt.setText("환경설정");
+        }
+
     }
     DrawerLayout.DrawerListener listener = new DrawerLayout.DrawerListener() {
         @Override
@@ -168,6 +198,13 @@ public class MainActivity extends AppCompatActivity {
         mainauthor.setText(resoner[seq].replace("/n", System.getProperty("line.separator")));
 
         String mode = PreferenceManager.getString(getApplicationContext(), "mode");
+//        Toast.makeText(getApplicationContext(),islike[seq], Toast.LENGTH_SHORT).show();
+
+        if(islike[seq].equals("Y")){
+            likebtn.setImageResource(R.drawable.heart);
+        }else{
+            likebtn.setImageResource(R.drawable.unheart);
+        }
 
         if(mode.equals("image")){
             int[] images = {R.drawable.bg1,R.drawable.bg2,R.drawable.bg3,R.drawable.bg4,R.drawable.bg5,R.drawable.bg6,R.drawable.bg7,R.drawable.bg8,R.drawable.bg9,R.drawable.bg10,R.drawable.bg11,R.drawable.bg12,R.drawable.bg13,R.drawable.bg14,R.drawable.bg15,R.drawable.bg16,R.drawable.bg17,R.drawable.bg18,R.drawable.bg19,R.drawable.bg20,R.drawable.bg21,R.drawable.bg22,R.drawable.bg23,R.drawable.bg24};
@@ -181,6 +218,7 @@ public class MainActivity extends AppCompatActivity {
         if(lang.equals("eng")){
             Cursor cursor = db.rawQuery("SELECT * FROM Ments where LANG = 'EN'", null);
             int count = cursor.getCount();   // db에 저장된 행 개수를 읽어온다
+            mentnumber = new String[count];
             content = new String[count];   // 저장된 행 개수만큼의 배열을 생성
             resoner = new String[count];   // 저장된 행 개수만큼의 배열을 생성
             islike = new String[count];   // 저장된 행 개수만큼의 배열을 생성
@@ -188,12 +226,15 @@ public class MainActivity extends AppCompatActivity {
 
                 cursor.moveToNext();   // 첫번째에서 다음 레코드가 없을때까지 읽음
 
+                String str_mentnumber = cursor.getString(0);   // 세번째 속성 0~
+
                 String str_content = cursor.getString(2);   // 세번째 속성 0~
 
                 String str_resoner = cursor.getString(3);   // 네번째 속성 0~
 
                 String str_islike = cursor.getString(4);   // 다섯번째 속성 0~
 
+                mentnumber[i] = str_mentnumber;
                 content[i] = str_content;   // 각각의 속성값들을 해당 배열의 i번째에 저장
                 resoner[i] = str_resoner;   // 각각의 속성값들을 해당 배열의 i번째에 저장
                 islike[i] = str_islike;   // 각각의 속성값들을 해당 배열의 i번째에 저장
@@ -202,6 +243,7 @@ public class MainActivity extends AppCompatActivity {
         }else{
             Cursor cursor = db.rawQuery("SELECT * FROM Ments where LANG = 'KR'", null);
             int count = cursor.getCount();   // db에 저장된 행 개수를 읽어온다
+            mentnumber = new String[count];
             content = new String[count];   // 저장된 행 개수만큼의 배열을 생성
             resoner = new String[count];   // 저장된 행 개수만큼의 배열을 생성
             islike = new String[count];   // 저장된 행 개수만큼의 배열을 생성
@@ -209,12 +251,15 @@ public class MainActivity extends AppCompatActivity {
 
                 cursor.moveToNext();   // 첫번째에서 다음 레코드가 없을때까지 읽음
 
+                String str_mentnumber = cursor.getString(0);   // 세번째 속성 0~
+
                 String str_content = cursor.getString(2);   // 세번째 속성
 
                 String str_resoner = cursor.getString(3);   // 네번째 속성
 
                 String str_islike = cursor.getString(4);   // 다섯번째 속성 0~
 
+                mentnumber[i] = str_mentnumber;
                 content[i] = str_content;   // 각각의 속성값들을 해당 배열의 i번째에 저장
                 resoner[i] = str_resoner;   // 각각의 속성값들을 해당 배열의 i번째에 저장
                 islike[i] = str_islike;   // 각각의 속성값들을 해당 배열의 i번째에 저장
@@ -280,17 +325,33 @@ public class MainActivity extends AppCompatActivity {
                     REQUEST_EXTENAL_STORAGE);
         }
     }
-    public void UpdateData(){
-        likebtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                boolean isUpdated = dbHelper.updateData(maintxt.getText().toString(),mainauthor.getText().toString(),"Y");
-                if(isUpdated == true)
-                    Toast.makeText(MainActivity.this,"Data Updated",Toast.LENGTH_LONG).show();
-                else
-                    Toast.makeText(MainActivity.this,"Data not Updated",Toast.LENGTH_LONG).show();
+    public int islike(){
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        String NumStr =  mentnumber[seq];
+        Cursor cursor = db.rawQuery("SELECT * FROM Ments where ISLIKE = 'Y' and NUMBER = ?", new String[]{NumStr});
+        int count = cursor.getCount();   // db에 저장된 행 개수를 읽어온다
+
+        return count;
+    }
+
+    public void UpdateData(View view){
+
+        int islikecnt = islike();
+
+        maintxt = findViewById(R.id.maintxt);
+        mainauthor = findViewById(R.id.mainauthor);
+        if (islikecnt == 0){
+            boolean isUpdated = dbHelper.updateData(mentnumber[seq],"Y");
+            if(isUpdated == true) {
+                likebtn.setImageResource(R.drawable.heart);
             }
-        });
+        }else{
+            boolean isUpdated = dbHelper.updateData(mentnumber[seq],"N");
+            if(isUpdated == true) {
+                likebtn.setImageResource(R.drawable.unheart);
+            }
+        }
+
     }
     public void checkFirstRun(){
         SharedPreferences pref = getSharedPreferences("isFirst", Activity.MODE_PRIVATE);
@@ -307,4 +368,5 @@ public class MainActivity extends AppCompatActivity {
             Log.d("Is first Time?", "not first");
         }
     }
+
 }

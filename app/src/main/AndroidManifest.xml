@@ -25,6 +25,7 @@
         <activity android:name=".MainActivity"/>
         <activity android:name=".SettingActivity"/>
         <activity android:name=".GuideActivity"/>
+        <activity android:name=".LikeActivity"/>
     </application>
 
 </manifest>

@@ -6,14 +6,14 @@
 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg1"
+
     tools:ignore="missingPrefix">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/nextlayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/background"
+
         android:onClick="nextMent">
 
         <!--        <TextView-->
@@ -82,6 +82,7 @@
                 android:contentDescription="@string/likebtn"
                 android:scaleType="centerInside"
                 app:srcCompat="@drawable/unheart"
+                android:onClick="UpdateData"
                 tools:ignore="ImageContrastCheck" />
 
             <ImageButton
@@ -117,7 +118,7 @@
             android:layout_marginTop="192dp"
             android:layout_marginEnd="142dp"
             android:fontFamily="@font/kopub_medium"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:gravity="center"
             android:text="네 자신을 알라"
             android:textSize="25sp"
@@ -133,7 +134,7 @@
             android:layout_marginTop="100dp"
             android:layout_marginBottom="149dp"
             android:fontFamily="@font/kopub_medium"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:text="소크라테스"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"

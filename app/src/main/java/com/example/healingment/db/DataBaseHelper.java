@@ -2,6 +2,7 @@ package com.example.healingment.db;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
@@ -16,7 +17,7 @@ import java.io.OutputStream;
 
 public class DataBaseHelper extends SQLiteOpenHelper{
     private final static String TAG = "DataBaseHelper"; // Logcat에 출력할 태그이름
-    private final static int DATABASE_VERSION = 2; // 버전 (ISLIKE추가)
+    private final static int DATABASE_VERSION = 3; // 버전 NO 컬럼명변경
     // database 의 파일 경로
     private static String DB_PATH = "";
     private static String DB_NAME = "ment.db";
@@ -24,7 +25,7 @@ public class DataBaseHelper extends SQLiteOpenHelper{
     private SQLiteDatabase mDataBase;
 
     // 3. 테이블 항목 네임
-    public static final String COL_1 = "NO";
+    public static final String COL_1 = "NUMBER";
     public static final String COL_2 = "LANG";
     public static final String COL_3 = "CONTENTS";
     public static final String COL_4 = "RESONER";
@@ -104,13 +105,26 @@ public class DataBaseHelper extends SQLiteOpenHelper{
         }
     }
 
-    public boolean updateData(String CONTENTS, String RESONER, String islike){
+    public boolean updateData(String NUMBER, String islike){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(COL_3,CONTENTS);
-        contentValues.put(COL_4,RESONER);
+//        contentValues.put(COL_4,RESONER);
         contentValues.put(COL_5,islike);
-        db.update(TABLE_NAME,contentValues,"CONTENTS = ?",new String[] { CONTENTS });
+        db.update(TABLE_NAME,contentValues,"NUMBER = ?",new String[] { NUMBER });
         return true;
+    }
+
+    public void update(String CONTENTS, String RESONER) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        // 조건에 일치하는 행의 데이터 변경
+        db.execSQL("UPDATE Ments SET islike= Y " + "'WHERE CONTENTS=" + CONTENTS + "',RESONER='");
+    }
+
+
+    // 데이터베이스 보여주기(읽어오기)
+    public Cursor getAllData() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res = db.rawQuery("select * from "+TABLE_NAME, null);
+        return res;
     }
 }
